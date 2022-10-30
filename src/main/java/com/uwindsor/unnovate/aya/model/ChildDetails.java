@@ -48,14 +48,13 @@ public class ChildDetails {
 		Name = name;
 	}
 
-
-	public String getDateOfBirth() {
+	public String getDob() {
 		return Dob;
 	}
 
 
-	public void setDateOfBirth(String dateOfBirth) {
-		Dob = dateOfBirth;
+	public void setDob(String dob) {
+		Dob = dob;
 	}
 
 
