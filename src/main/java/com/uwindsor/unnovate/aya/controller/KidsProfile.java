@@ -26,6 +26,7 @@ public class KidsProfile {
 	@ResponseBody
 	    public String createKidsDetails(@RequestBody String id) throws Exception {
 		 //create ObjectMapper instance
+		System.out.println("Inside create");
         ObjectMapper objectMapper = new ObjectMapper();
 
         //read JSON file and convert to a customer object
@@ -35,7 +36,7 @@ public class KidsProfile {
         
         childRepository.save(customer);
         System.out.println(customer.toString());
-	        return "Hello World RESTful with Spring Boot:-  " +id;
+	        return "Child " +customer.getName() + " added successfully.";
 	    }
 	
 	@RequestMapping(
@@ -44,12 +45,21 @@ public class KidsProfile {
 			  headers = "Accept=application/json")
 	@ResponseBody
 	    public String updateKidsDetails(@RequestBody String id) throws Exception {
+		
+		System.out.println("Inside update");
 		 //create ObjectMapper instance
       ObjectMapper objectMapper = new ObjectMapper();
 
       //read JSON file and convert to a customer object
       ChildDetails customer = objectMapper.readValue(id, ChildDetails.class);
-
+      ChildDetails cd = childRepository.findById(customer.getId());
+      cd.setDob(customer.getDob());
+      cd.setDoctor_Name(customer.getDoctor_Name());
+      cd.setDoctor_Phone(customer.getDoctor_Phone());
+      cd.setGender(customer.getGender());
+      cd.setName(customer.getName());
+      
+      childRepository.save(cd);
       //print customer details
       System.out.println(customer.toString());
 	        return "Hello World RESTful with Spring Boot:-  " +id;
@@ -61,6 +71,8 @@ public class KidsProfile {
 			  headers = "Accept=application/json")
 	@ResponseBody
 	    public String deleteKidsDetails(@RequestBody String id) throws Exception {
+		
+		System.out.println("Inside delete");
 		 //create ObjectMapper instance
       ObjectMapper objectMapper = new ObjectMapper();
 
@@ -79,6 +91,7 @@ public class KidsProfile {
 			  method = RequestMethod.GET)
 	@ResponseBody
 	    public String readKidsDetails() throws Exception {
+		System.out.println("Inside read");
 		 //create ObjectMapper instance
       ObjectMapper objectMapper = new ObjectMapper();
 
