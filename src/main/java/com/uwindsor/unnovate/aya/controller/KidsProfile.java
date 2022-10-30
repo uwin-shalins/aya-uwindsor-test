@@ -90,7 +90,9 @@ public class KidsProfile {
     	  System.out.println("Child name is :- "+cd.getName());
     	  System.out.println("Child Dotor name is :- "+cd.getDoctor_Name());
       }
-	        return "Hello World RESTful with Spring Boot:-  ";
+      
+      String jsonStr = objectMapper.writeValueAsString(list);
+    		  return jsonStr;
 	    }
 
 }
