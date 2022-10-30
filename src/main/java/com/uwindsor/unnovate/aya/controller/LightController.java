@@ -19,17 +19,12 @@ public class LightController {
 	@ResponseBody
 	    public String changeLightStatus(@RequestBody String id) throws Exception {
 		 //create ObjectMapper instance
-      ObjectMapper objectMapper = new ObjectMapper();
-
-      //read JSON file and convert to a customer object
-      ChildDetails customer = objectMapper.readValue(id, ChildDetails.class);
-
-      //print customer details
-      System.out.println(customer.toString());
-      if(id.equals("0"))
-	        return "Light Turned ON";
-      else
-    	  return "Light Turned OFF";
-	    }
+	      ObjectMapper objectMapper = new ObjectMapper();
+	
+	      if(id.equals("0"))
+		        return "Light Turned ON";
+	      else
+	    	  return "Light Turned OFF";
+		}
 
 }

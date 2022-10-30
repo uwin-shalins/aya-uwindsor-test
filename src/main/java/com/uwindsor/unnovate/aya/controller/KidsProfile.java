@@ -76,15 +76,12 @@ public class KidsProfile {
 	
 	@RequestMapping(
 			  value = "/kidsprofile/read", 
-			  method = RequestMethod.GET, 
-			  headers = "Accept=application/json")
+			  method = RequestMethod.GET)
 	@ResponseBody
-	    public String readKidsDetails(@RequestBody String id) throws Exception {
+	    public String readKidsDetails() throws Exception {
 		 //create ObjectMapper instance
       ObjectMapper objectMapper = new ObjectMapper();
 
-      //read JSON file and convert to a customer object
-      ChildDetails customer = objectMapper.readValue(id, ChildDetails.class);
       List <ChildDetails> list = childRepository.findAll();
       //print customer details
       for(int i=0;i<list.size();i++)
@@ -93,7 +90,6 @@ public class KidsProfile {
     	  System.out.println("Child name is :- "+cd.getName());
     	  System.out.println("Child Dotor name is :- "+cd.getDoctor_Name());
       }
-      System.out.println(customer.toString()+" --- "+list.size());
 	        return "Hello World RESTful with Spring Boot:-  ";
 	    }
 
