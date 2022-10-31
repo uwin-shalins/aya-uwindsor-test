@@ -81,7 +81,6 @@ public class KidsProfile {
 
       //print customer details
       System.out.println(customer.toString());
-      customer.setId(Integer.parseInt(id));
       childRepository.delete(customer);
 	        return "Hello World RESTful with Spring Boot:-  " +id;
 	    }
