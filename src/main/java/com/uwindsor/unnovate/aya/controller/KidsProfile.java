@@ -72,7 +72,7 @@ public class KidsProfile {
 	@ResponseBody
 	    public String deleteKidsDetails(@RequestBody String id) throws Exception {
 		
-		System.out.println("Inside delete");
+		System.out.println("Inside delete functionality");
 		 //create ObjectMapper instance
       ObjectMapper objectMapper = new ObjectMapper();
 
