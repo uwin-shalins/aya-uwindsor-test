@@ -15,7 +15,7 @@ public class LightController {
 	@RequestMapping(
 			  value = "/lightstatus/changeLightStatus", 
 			  method = RequestMethod.POST, 
-			  headers = "Accept=text/plain")
+			  headers = "Accept=application/json")
 	@ResponseBody
 	    public String changeLightStatus(@RequestBody String id) throws Exception {
 		 //create ObjectMapper instance
