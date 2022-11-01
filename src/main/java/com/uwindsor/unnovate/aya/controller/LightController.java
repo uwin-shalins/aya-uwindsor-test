@@ -20,7 +20,7 @@ public class LightController {
 	    public String changeLightStatus(@RequestBody String id) throws Exception {
 		 //create ObjectMapper instance
 	      ObjectMapper objectMapper = new ObjectMapper();
-	
+	System.out.println(id);
 	      if(id.equals("0")) {
 	    	  System.out.println("Light Turned ON");
 		        return "Light Turned ON";}
