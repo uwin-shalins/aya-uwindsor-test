@@ -21,10 +21,13 @@ public class LightController {
 		 //create ObjectMapper instance
 	      ObjectMapper objectMapper = new ObjectMapper();
 	
-	      if(id.equals("0"))
-		        return "Light Turned ON";
-	      else
+	      if(id.equals("0")) {
+	    	  System.out.println("Light Turned ON");
+		        return "Light Turned ON";}
+	      else {
+	    	  System.out.println("Light Turned OFF");
 	    	  return "Light Turned OFF";
+	      }
 		}
 
 }
