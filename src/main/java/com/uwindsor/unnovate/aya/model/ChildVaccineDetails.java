@@ -2,16 +2,29 @@ package com.uwindsor.unnovate.aya.model;
 
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "child_vaccine_details")
 public class  ChildVaccineDetails{
 	
+	@Id
+	private int id;
 	private String childid;
 	private String vaccineid;
 	private String month;
 	private String taken;
+	
+	public int getId() {
+		return id;
+	}
+
+
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	
 	
