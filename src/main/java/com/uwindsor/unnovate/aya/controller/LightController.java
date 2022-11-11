@@ -55,7 +55,7 @@ public class LightController {
 			  value = "/lightstatus/currentLightStatus", 
 			  method = RequestMethod.GET)
 	@ResponseBody
-	    public String currentLightStatus(@RequestBody String id) throws Exception {
+	    public String currentLightStatus() throws Exception {
 		 //create ObjectMapper instance
 		List<LightStatus> ls = lightStatusRepository.findAll();
 		String currentStatus="";
