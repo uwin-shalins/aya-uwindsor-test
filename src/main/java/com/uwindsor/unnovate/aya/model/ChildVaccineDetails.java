@@ -8,7 +8,7 @@ import javax.persistence.Table;
 @Table(name = "child_vaccine_details")
 public class  ChildVaccineDetails{
 	
-	private int childid;
+	private String childid;
 	private String vaccineid;
 	private String month;
 	private String taken;
@@ -25,13 +25,13 @@ public class  ChildVaccineDetails{
 
 
 
-	public int getChildid() {
+	public String getChildid() {
 		return childid;
 	}
 
 
 
-	public void setChildid(int childid) {
+	public void setChildid(String childid) {
 		this.childid = childid;
 	}
 
