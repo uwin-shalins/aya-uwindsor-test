@@ -101,8 +101,8 @@ public class ChildVaccineDetailsController {
 		System.out.println("Inside read");
 		 //create ObjectMapper instance
       ObjectMapper objectMapper = new ObjectMapper();
-      ChildDetails temp = objectMapper.readValue(id, ChildDetails.class);
-      ChildDetails cd = childRepository.findById(temp.getId());
+      id = id.replaceAll("\"", "");
+      ChildDetails cd = childRepository.findById(Integer.parseInt(id));
       List <VaccineList> list = vaccineListRepository.findAll();
       List <VaccineList> returnList = null;
       //print customer details
