@@ -117,6 +117,7 @@ public class ChildVaccineDetailsController {
       {  
     	  age="0";  
       }  
+      System.out.println("Age is "+age);
       for(int i=0;i<list.size();i++)
       {
     	  VaccineList cvd = list.get(i);
@@ -126,7 +127,7 @@ public class ChildVaccineDetailsController {
       }
       
       String jsonStr = objectMapper.writeValueAsString(returnList);
-    		  return jsonStr;
+      return jsonStr;
 	    }
 
 }
