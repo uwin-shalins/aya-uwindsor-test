@@ -95,7 +95,7 @@ public class ChildVaccineDetailsController {
 	@RequestMapping(
 			  value = "/childvaccinedetails/read", 
 			  method = RequestMethod.POST,
-			  headers = "Accept=application/json")
+			  headers = "Accept=text/plain")
 	@ResponseBody
 	    public String readParentsDetails(String id) throws Exception {
 		System.out.println("Inside read");
