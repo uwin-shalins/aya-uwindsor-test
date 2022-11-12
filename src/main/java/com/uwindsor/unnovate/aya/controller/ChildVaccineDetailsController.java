@@ -1,5 +1,7 @@
 package com.uwindsor.unnovate.aya.controller;
 
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,14 +12,21 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.uwindsor.unnovate.aya.model.ChildDetails;
 import com.uwindsor.unnovate.aya.model.ChildVaccineDetails;
+import com.uwindsor.unnovate.aya.model.ChildsNutrition;
+import com.uwindsor.unnovate.aya.model.VaccineList;
 import com.uwindsor.unnovate.aya.repository.ChildVaccineDetailsRepository;
+import com.uwindsor.unnovate.aya.repository.VaccineListRepository;
 
 @RestController
 public class ChildVaccineDetailsController {
 	
 	@Autowired
     private ChildVaccineDetailsRepository childVaccineDetailsRepository;
+	
+	@Autowired
+    private VaccineListRepository vaccineListRepository;
 
 	@RequestMapping(
 			  value = "/childvaccinedetails/create", 
@@ -81,22 +90,38 @@ public class ChildVaccineDetailsController {
 	
 	@RequestMapping(
 			  value = "/childvaccinedetails/read", 
-			  method = RequestMethod.GET)
+			  method = RequestMethod.POST,
+			  headers = "Accept=application/json")
 	@ResponseBody
-	    public String readParentsDetails() throws Exception {
+	    public String readParentsDetails(String id) throws Exception {
 		System.out.println("Inside read");
 		 //create ObjectMapper instance
       ObjectMapper objectMapper = new ObjectMapper();
+      ChildDetails cd = objectMapper.readValue(id, ChildDetails.class);
 
-      List <ChildVaccineDetails> list = childVaccineDetailsRepository.findAll();
+      List <VaccineList> list = vaccineListRepository.findAll();
+      List <VaccineList> returnList = null;
       //print customer details
+      String age="";
+      ChildsNutrition cnd = new ChildsNutrition();
+      LocalDate curDate = LocalDate.now(); 
+      if ((cd.getDob() != null) && (curDate != null))   
+      {  
+    	  age= Period.between(LocalDate.parse(cd.getDob()), curDate).getYears()+"";  
+      }  
+      else  
+      {  
+    	  age="0";  
+      }  
       for(int i=0;i<list.size();i++)
       {
-    	  ChildVaccineDetails cd = list.get(i);
-    	  System.out.println("Parent name is :- "+cd.getChildid());
+    	  VaccineList cvd = list.get(i);
+    	  if(cvd.getMonths().contains(age))
+    		  returnList.add(cvd);
+    	  System.out.println("Parent name is :- "+cvd.getVaccinename());
       }
       
-      String jsonStr = objectMapper.writeValueAsString(list);
+      String jsonStr = objectMapper.writeValueAsString(returnList);
     		  return jsonStr;
 	    }
 
