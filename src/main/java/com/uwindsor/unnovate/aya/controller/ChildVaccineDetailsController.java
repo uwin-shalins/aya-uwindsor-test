@@ -2,6 +2,7 @@ package com.uwindsor.unnovate.aya.controller;
 
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -104,7 +105,7 @@ public class ChildVaccineDetailsController {
       id = id.replaceAll("\"", "");
       ChildDetails cd = childRepository.findById(Integer.parseInt(id));
       List <VaccineList> list = vaccineListRepository.findAll();
-      List <VaccineList> returnList = null;
+      List <VaccineList> returnList = new ArrayList<VaccineList>();
       //print customer details
       String age="";
       ChildsNutrition cnd = new ChildsNutrition();
