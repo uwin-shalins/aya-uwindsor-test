@@ -111,7 +111,7 @@ public class ChildVaccineDetailsController {
       LocalDate curDate = LocalDate.now(); 
       if ((cd.getDob() != null) && (curDate != null))   
       {  
-    	  age= Period.between(LocalDate.parse(cd.getDob()), curDate).getYears()+"";  
+    	  age= Period.between(LocalDate.parse(cd.getDob()), curDate).getMonths()+"";  
       }  
       else  
       {  
