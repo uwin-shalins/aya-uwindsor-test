@@ -122,8 +122,11 @@ public class ChildVaccineDetailsController {
       for(int i=0;i<list.size();i++)
       {
     	  VaccineList cvd = list.get(i);
-    	  if(cvd.getMonths().contains(age))
-    		  returnList.add(cvd);
+    	  String[] res = cvd.getMonths().split("[,]", 0);
+    	  for(String myStr: res) {
+    		  if(myStr.equals(age))
+        		  returnList.add(cvd);
+    	  }
     	  System.out.println("Parent name is :- "+cvd.getVaccinename());
       }
       
