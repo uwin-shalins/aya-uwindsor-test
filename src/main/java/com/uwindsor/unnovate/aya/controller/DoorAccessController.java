@@ -25,6 +25,7 @@ public class DoorAccessController {
 	    public String accessDoor(@RequestBody String id) throws Exception {
 		 //create ObjectMapper instance
 		System.out.println(id);
+		id = id.replaceAll("\"", "");
 	      if(id.equals("1234")) {
 	    	  System.out.println("Access Granted");
 	    	  DoorAccessLogs da = new DoorAccessLogs();

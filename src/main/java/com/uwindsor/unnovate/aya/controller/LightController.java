@@ -28,6 +28,7 @@ public class LightController {
 		List<LightStatus> ls = lightStatusRepository.findAll();
 		String currentStatus="";
 		LightStatus cd = new LightStatus();
+		id = id.replaceAll("\"", "");
 		 for(int i=0;i<ls.size();i++)
 	      {
 			 cd = ls.get(i);
