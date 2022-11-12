@@ -16,6 +16,7 @@ import com.uwindsor.unnovate.aya.model.ChildDetails;
 import com.uwindsor.unnovate.aya.model.ChildVaccineDetails;
 import com.uwindsor.unnovate.aya.model.ChildsNutrition;
 import com.uwindsor.unnovate.aya.model.VaccineList;
+import com.uwindsor.unnovate.aya.repository.ChildDetailsRepository;
 import com.uwindsor.unnovate.aya.repository.ChildVaccineDetailsRepository;
 import com.uwindsor.unnovate.aya.repository.VaccineListRepository;
 
@@ -27,6 +28,9 @@ public class ChildVaccineDetailsController {
 	
 	@Autowired
     private VaccineListRepository vaccineListRepository;
+	
+	@Autowired
+    private ChildDetailsRepository childRepository;
 
 	@RequestMapping(
 			  value = "/childvaccinedetails/create", 
@@ -97,8 +101,8 @@ public class ChildVaccineDetailsController {
 		System.out.println("Inside read");
 		 //create ObjectMapper instance
       ObjectMapper objectMapper = new ObjectMapper();
-      ChildDetails cd = objectMapper.readValue(id, ChildDetails.class);
-
+      ChildDetails temp = objectMapper.readValue(id, ChildDetails.class);
+      ChildDetails cd = childRepository.findById(temp.getId());
       List <VaccineList> list = vaccineListRepository.findAll();
       List <VaccineList> returnList = null;
       //print customer details
