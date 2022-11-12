@@ -97,7 +97,7 @@ public class ChildVaccineDetailsController {
 			  method = RequestMethod.POST,
 			  headers = "Accept=text/plain")
 	@ResponseBody
-	    public String readParentsDetails(String id) throws Exception {
+	    public String readParentsDetails(@RequestBody String id) throws Exception {
 		System.out.println("Inside read");
 		 //create ObjectMapper instance
       ObjectMapper objectMapper = new ObjectMapper();
