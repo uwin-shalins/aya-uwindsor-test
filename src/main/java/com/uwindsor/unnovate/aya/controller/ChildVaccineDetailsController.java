@@ -26,9 +26,7 @@ public class ChildVaccineDetailsController {
 	
 	@Autowired
     private ChildVaccineDetailsRepository childVaccineDetailsRepository;
-	
-	@Autowired
-    private VaccineListRepository vaccineListRepository;
+
 	
 	@Autowired
     private ChildDetailsRepository childRepository;
@@ -104,11 +102,19 @@ public class ChildVaccineDetailsController {
       ObjectMapper objectMapper = new ObjectMapper();
       id = id.replaceAll("\"", "");
       ChildDetails cd = childRepository.findById(Integer.parseInt(id));
-      List <VaccineList> list = vaccineListRepository.findAll();
-      List <VaccineList> returnList = new ArrayList<VaccineList>();
+      List <ChildVaccineDetails> list = childVaccineDetailsRepository.findAll();
+      List <ChildVaccineDetails> returnList = new ArrayList<ChildVaccineDetails>();
       //print customer details
       String age="";
       ChildsNutrition cnd = new ChildsNutrition();
+      for(int j =0;j<list.size();j++)
+      {
+    	  ChildVaccineDetails cvd = list.get(j);
+    	  System.out.println("Vaccine details 1:- " + cvd.getChildid());
+    	  System.out.println("Vaccine details 2:- " + cvd.getVaccineid());
+    	  System.out.println("Vaccine details 3:- " + cvd.getMonth());
+    	  System.out.println("Vaccine details 4:- " + cvd.getId());
+      }
       LocalDate curDate = LocalDate.now(); 
       if ((cd.getDob() != null) && (curDate != null))   
       {  
@@ -118,16 +124,14 @@ public class ChildVaccineDetailsController {
       {  
     	  age="0";  
       }  
-      System.out.println("Age is "+age);
+      
       for(int i=0;i<list.size();i++)
       {
-    	  VaccineList cvd = list.get(i);
-    	  String[] res = cvd.getMonths().split("[,]", 0);
-    	  for(String myStr: res) {
-    		  if(myStr.equals(age))
-        		  returnList.add(cvd);
+    	  ChildVaccineDetails cvd = list.get(i);
+    	  if(cvd.getChildid().equals(id) && Integer.parseInt(cvd.getMonth()) <= (Integer.parseInt(age)+1) && cvd.getTaken().equals("0")) {
+    		  returnList.add(cvd);
     	  }
-    	  System.out.println("Parent name is :- "+cvd.getVaccinename());
+    	  System.out.println("Parent name is :- "+cvd.getChildid());
       }
       
       String jsonStr = objectMapper.writeValueAsString(returnList);
