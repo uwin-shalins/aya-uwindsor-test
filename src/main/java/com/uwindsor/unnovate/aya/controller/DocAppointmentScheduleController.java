@@ -57,7 +57,7 @@ public class DocAppointmentScheduleController {
 
       //read JSON file and convert to a customer object
       DocAppointmentSchedule customer = objectMapper.readValue(id, DocAppointmentSchedule.class);
-      DocAppointmentSchedule cd = docAppointmentScheduleRepository.findById(Integer.parseInt(customer.getChildid()));
+      DocAppointmentSchedule cd = docAppointmentScheduleRepository.findById(customer.getId());
       cd.setDate(customer.getDate());
       cd.setTime(customer.getTime());
       
