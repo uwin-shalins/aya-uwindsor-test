@@ -34,7 +34,7 @@ public class ChildsNutritionController {
 	      ChildDetails customer = objectMapper.readValue(id, ChildDetails.class);
 	      System.out.println(id);
 	      String age="";
-	      ChildsNutrition cnd = new ChildsNutrition();
+	      
 	      LocalDate curDate = LocalDate.now(); 
 	      if ((customer.getDob() != null) && (curDate != null))   
 	      {  
@@ -44,13 +44,12 @@ public class ChildsNutritionController {
 	      {  
 	    	  age="0";  
 	      }  
-	      cnd.setChildage(age);
 	      //cnd.setGender(customer.getGender());
 	      List<ChildsNutrition> returnList = new ArrayList<ChildsNutrition>();
 	      List<ChildsNutrition> list = childNutritionDetailsRepository.findAll();
 	      for(int i = 0; i<list.size();i++) {
 	    	  if(list.get(i).getChildage().equals(age) && list.get(i).getGender().equals(customer.getGender()))
-	    		  returnList.add(cnd);
+	    		  returnList.add(list.get(i));
 	      }
 	    	  return returnList;
 		}
