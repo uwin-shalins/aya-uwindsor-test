@@ -2,6 +2,7 @@ package com.uwindsor.unnovate.aya.controller;
 
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,7 +46,7 @@ public class ChildsNutritionController {
 	      }  
 	      cnd.setChildage(age);
 	      //cnd.setGender(customer.getGender());
-	      List<ChildsNutrition> returnList = null;
+	      List<ChildsNutrition> returnList = new ArrayList<ChildsNutrition>;
 	      List<ChildsNutrition> list = childNutritionDetailsRepository.findAll();
 	      for(int i = 0; i<list.size();i++) {
 	    	  if(list.get(i).getChildage().equals(age) && list.get(i).getGender().equals(customer.getGender()))
