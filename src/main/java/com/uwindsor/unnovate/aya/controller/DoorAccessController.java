@@ -54,10 +54,9 @@ public class DoorAccessController {
 			  method = RequestMethod.GET, 
 			  headers = "Accept=text/plain")
 	@ResponseBody
-	    public int currentDoorStatus(@RequestBody String id) throws Exception {
+	    public int currentDoorStatus() throws Exception {
 		 //create ObjectMapper instance
-		System.out.println(id);
-		id = id.replaceAll("\"", "");
+		
 		DoorAccessLogs dal = new DoorAccessLogs();
 		DoorAccessLogs dal1 = new DoorAccessLogs();
 		int index=0;
