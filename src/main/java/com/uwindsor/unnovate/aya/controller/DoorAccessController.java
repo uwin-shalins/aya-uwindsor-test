@@ -51,7 +51,7 @@ public class DoorAccessController {
 	
 	@RequestMapping(
 			  value = "/dooraccess/doorstatus", 
-			  method = RequestMethod.POST, 
+			  method = RequestMethod.GET, 
 			  headers = "Accept=text/plain")
 	@ResponseBody
 	    public int currentDoorStatus(@RequestBody String id) throws Exception {

@@ -52,7 +52,7 @@ public class ChildDetailsController {
         newList = childVaccineDetailsRepository.findAll();
         List <ChildDetails> childList = childRepository.findAll();
         int childId=0;
-        int identity =0;
+        int identity =1;
         
         for(int i =0 ;i<newList.size();i++) {
         	ChildVaccineDetails cvd1 = newList.get(i);
