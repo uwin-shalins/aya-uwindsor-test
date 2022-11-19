@@ -15,6 +15,7 @@ public class  ChildVaccineDetails{
 	private int id;
 	private String childid;
 	private String vaccineid;
+	private String vaccinename;
 	private String month;
 	private String taken;
 	
@@ -84,6 +85,18 @@ public class  ChildVaccineDetails{
 
 	public void setTaken(String taken) {
 		this.taken = taken;
+	}
+
+
+
+	public String getVaccinename() {
+		return vaccinename;
+	}
+
+
+
+	public void setVaccinename(String vaccinename) {
+		this.vaccinename = vaccinename;
 	}
 
 

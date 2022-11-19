@@ -77,6 +77,7 @@ public class ChildDetailsController {
       		  cvd.setMonth(myStr);
       		  cvd.setTaken("0");
       		  cvd.setVaccineid(vl.getId()+"");
+      		  cvd.setVaccinename(vl.getVaccinename());
       		vaccineDetailsList.add(cvd);
       		identity++;
       	  }
