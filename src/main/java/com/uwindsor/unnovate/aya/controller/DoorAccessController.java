@@ -54,7 +54,7 @@ public class DoorAccessController {
 			  method = RequestMethod.GET, 
 			  headers = "Accept=text/plain")
 	@ResponseBody
-	    public int currentDoorStatus() throws Exception {
+	    public String currentDoorStatus() throws Exception {
 		 //create ObjectMapper instance
 		
 		DoorAccessLogs dal = new DoorAccessLogs();
@@ -69,9 +69,9 @@ public class DoorAccessController {
 	    }
 		dal1 = ls.get(index-1);
 	     if(dal1.getStatus().equalsIgnoreCase("Authorized"))
-	    	 return 1;
+	    	 return "1";
 	     else
-	    	 return 0;
+	    	 return "0";
 		}
 
 }
