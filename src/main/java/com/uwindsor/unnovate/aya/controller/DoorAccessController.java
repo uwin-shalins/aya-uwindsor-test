@@ -67,7 +67,7 @@ public class DoorAccessController {
 			if(index<dal.getId())
 				index = dal.getId();
 	    }
-		dal1 = ls.get(index);
+		dal1 = ls.get(index-1);
 	     if(dal1.getStatus().equalsIgnoreCase("Authorized"))
 	    	 return 1;
 	     else
