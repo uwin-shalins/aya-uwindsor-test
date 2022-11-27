@@ -42,11 +42,9 @@ public class DocAppointmentScheduleController {
         for(int i=0;i<doctorList.size();i++)
         {
         	System.out.println("Inside if:- "+Integer.parseInt(customer.getDoctorid()));
+        	cd = doctorList.get(i);
         	if(cd.getDocid() == Integer.parseInt(customer.getDoctorid()))
-        	{
-        		cd = doctorList.get(i);
         		break;
-        	}
         }
 
         //print customer details
