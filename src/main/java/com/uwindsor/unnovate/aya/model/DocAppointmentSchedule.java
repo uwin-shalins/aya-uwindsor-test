@@ -13,6 +13,7 @@ public class DocAppointmentSchedule {
 	private int id;
 	private String childid;
 	private String doctorid;
+	private String doctorname;
 	private String date;
 	private String time;
 	
@@ -73,6 +74,16 @@ public class DocAppointmentSchedule {
 
 	public void setTime(String time) {
 		this.time = time;
+	}
+
+
+	public String getDoctorname() {
+		return doctorname;
+	}
+
+
+	public void setDoctorname(String doctorname) {
+		this.doctorname = doctorname;
 	}
 
 

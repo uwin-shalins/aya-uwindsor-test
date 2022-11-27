@@ -36,9 +36,19 @@ public class DocAppointmentScheduleController {
 
         //read JSON file and convert to a customer object
         DocAppointmentSchedule customer = objectMapper.readValue(id, DocAppointmentSchedule.class);
+        List <DoctorsList> doctorList = doctorListRepository.findAll();
+        DoctorsList cd = new DoctorsList();
+        for(int i=0;i<doctorList.size();i++)
+        {
+        	if(cd.getDocid() == Integer.parseInt(customer.getDoctorid()))
+        	{
+        		cd = doctorList.get(i);
+        		break;
+        	}
+        }
 
         //print customer details
-        
+        customer.setDoctorname(cd.getDocname());
         docAppointmentScheduleRepository.save(customer);
         System.out.println(customer.toString());
 	        return "Doc Appointment " +customer.getChildid() + " added successfully.";
