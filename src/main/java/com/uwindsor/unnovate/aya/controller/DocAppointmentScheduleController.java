@@ -38,8 +38,10 @@ public class DocAppointmentScheduleController {
         DocAppointmentSchedule customer = objectMapper.readValue(id, DocAppointmentSchedule.class);
         List <DoctorsList> doctorList = doctorListRepository.findAll();
         DoctorsList cd = new DoctorsList();
+        System.out.println("data coming from UI:- "+cd.getDocid());
         for(int i=0;i<doctorList.size();i++)
         {
+        	System.out.println("Inside if:- "+Integer.parseInt(customer.getDoctorid()));
         	if(cd.getDocid() == Integer.parseInt(customer.getDoctorid()))
         	{
         		cd = doctorList.get(i);
